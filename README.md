@@ -3,6 +3,13 @@ __
 PERSONALIZED TUTOR FOR A/L STUDENTS
 ___
 
+
+## Team
+-  E/20/342, Chamath Rupasinghe, [e20342@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/20/363, Yohan Senanayake, [e20363@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/20/365, Chamodi Senaratne, [e20365@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/20/370, Rashmika Sewmini, [e20370@eng.pdn.ac.lk](mailto:name@email.com)
+
 ## Please refer the instructions in below URL:
 
 https://projects.ce.pdn.ac.lk/docs/how-to-add-a-project

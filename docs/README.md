@@ -3,13 +3,13 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
-title:
+repository-name: e20-co225-Mentor-Mate
+title: Mentor-Mate 
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+Mentor-Mate
 
 ---
 
@@ -20,9 +20,10 @@ This is a sample image, to show how to add images to your page. To learn more op
  -->
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/20/342, Chamath Rupasinghe, [e20342@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/20/363, Yohan Senanayake, [e20363@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/20/365, Chamodi Senaratne, [e20365@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/20/370, Rashmika Sewmini, [e20370@eng.pdn.ac.lk](mailto:name@email.com)
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -33,7 +34,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
- description of the real world problem and solution, impact
+ Personalized Tutor for A/L Students
 
 ## Other Sub Topics
 

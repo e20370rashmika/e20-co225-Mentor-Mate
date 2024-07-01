@@ -1,22 +1,28 @@
-from chroma_db_manager import ChromaDBManager
+
 from mentor_mate import mentorMate
+from vectordb_update import vectorDB
 
-user_input = "what are the primary branches of biology?"
+while True:
+    # getting user input
+    print("I'm Your MentorMate, Ask me anything about biology!")
+    print("Type 'exit' to quit")
 
-# creating chromaDB client to access the vector database
-vectorDB = ChromaDBManager("MentorMateStage1/vectorDb")
+    user_input = input("what you want to know: ")
 
-# adding data to the vector database using chroma client
-vectorDB.add_data_to_vectorDb('IntroToBio', 'MentorMateStage1/testData/IntroToBio.pdf')
+    if user_input == 'exit':
+        break  
+
+    # queriny the vector database using same chroma client from the vectordb_update.py script
+    similarity_docs = vectorDB.query_documents(user_input)
+
+    mentor = mentorMate(user_input, similarity_docs)
+    response = mentor.get_response()
+    print("--------------------response-------------------")
+    print("MentorMate: ", response)
+    print("-----------------------------------------------")
 
 
-# query the vector database to get the similar documents using current chromadb client
-similarity_docs = vectorDB.query_documents(user_input)
 
-mentor = mentorMate(user_input, similarity_docs)
-response = mentor.get_response()
-
-print(response)
 
 
 

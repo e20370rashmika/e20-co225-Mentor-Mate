@@ -4,10 +4,10 @@ from mentor_mate import mentorMate
 user_input = "what are the primary branches of biology?"
 
 # creating chromaDB client to access the vector database
-vectorDB = ChromaDBManager("vectorDb")
+vectorDB = ChromaDBManager("MentorMateStage1/vectorDb")
 
 # adding data to the vector database using chroma client
-vectorDB.add_data_to_vectorDb('IntroToBio', 'testData/IntroToBio.pdf')
+vectorDB.add_data_to_vectorDb('IntroToBio', 'MentorMateStage1/testData/IntroToBio.pdf')
 
 
 # query the vector database to get the similar documents using current chromadb client

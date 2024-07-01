@@ -1,4 +1,4 @@
-
+#this file contains the main functions for the youtube assistant project . use this for refernce when creating the mentor mate project
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv

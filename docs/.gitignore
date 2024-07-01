@@ -6,3 +6,8 @@ Gemfile.lock
 Gemfile
 
 # Add your own files to be ignored from git in here
+
+E20-CO225-MENTOR-MATE/MentorMateStage1/__pycache__/
+E20-CO225-MENTOR-MATE/MentorMateStage1/myenv/
+E20-CO225-MENTOR-MATE/MentorMateStage1/.env
+E20-CO225-MENTOR-MATE/MentorMateStage1/vectorDb

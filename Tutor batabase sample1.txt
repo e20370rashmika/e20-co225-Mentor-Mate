@@ -1,0 +1,138 @@
+CREATE TABLE User(
+	UserID VARCHAR(100) PRIMARY KEY,
+	NAME VARCHAR(30) NOT NULL,
+	Email VARCHAR(50),
+	Passward VARCHAR(10) NOT NULL,
+	DateOfBirth DATE ,
+	Grade INT NOT NULL,
+	Stream VARCHAR(20));
+	
+CREATE TABLE Subject (
+    subjectid VARCHAR(100) PRIMARY KEY,
+    Subjectname VARCHAR(100)
+);
+
+CREATE TABLE Lesson (
+    lessonid VARCHAR(100) PRIMARY KEY,
+    subjectid VARCHAR(100),
+    lessonname VARCHAR(100),
+    FOREIGN KEY (subjectid) REFERENCES Subject(subjectid) ON DELETE CASCADE
+);
+
+CREATE TABLE Submodule (
+    submoduleid VARCHAR(100) PRIMARY KEY,
+    lessonid VARCHAR(100),
+    submodule_name VARCHAR(100),
+    description VARCHAR(100),
+    FOREIGN KEY (lessonid) REFERENCES Lesson(lessonid) ON DELETE CASCADE
+);
+
+CREATE TABLE Question (
+    questionid VARCHAR(100) PRIMARY KEY,
+    submoduleid VARCHAR(100),
+    questioncontent VARCHAR(100),
+    FOREIGN KEY (submoduleid) REFERENCES Submodule(submoduleid) ON DELETE CASCADE
+);
+
+CREATE TABLE Score (
+    lessonid VARCHAR(100),
+    UserID VARCHAR(100),
+    totallessonmark INT,
+    FOREIGN KEY (lessonid) REFERENCES Lesson(lessonid) ON DELETE CASCADE,
+    FOREIGN KEY (userid) REFERENCES User(userid) ON DELETE CASCADE
+
+
+);
+
+CREATE TABLE UserAnswer (
+    answerid VARCHAR(100) PRIMARY KEY,
+    questionid VARCHAR(100),
+    userid VARCHAR(100),
+    answer VARCHAR(100),
+    feedback VARCHAR(100),
+    mark INT,
+    FOREIGN KEY (questionid) REFERENCES Question(questionid) ON DELETE CASCADE,
+    FOREIGN KEY (userid) REFERENCES User(userid) ON DELETE CASCADE
+);
+
+CREATE TABLE FollowSujbect(
+	userid VARCHAR(100),
+	subjectid VARCHAR(100),
+	FOREIGN KEY (userid) REFERENCES User(userid) ON DELETE CASCADE,
+	FOREIGN KEY (subjectid) REFERENCES Subject(subjectid) ON DELETE CASCADE);
+
+CREATE TABLE Payment(
+	paymentid VARCHAR(100) PRIMARY KEY,
+	userid VARCHAR(100),
+	Payment_method VARCHAR(30),
+	Amount INT,
+	FOREIGN KEY (userid) REFERENCES User(userid) ON DELETE CASCADE
+);
+
+
+INSERT INTO user(user.UserID,user.NAME,user.Email,user.Passward,user.DateOfBirth,user.Grade,user.Stream)
+VALUES ("u0001","Rashmika1","e203701@gmail.com","ktrsfghb23131",'2001.03.19',12,"bio_science"),
+		("u0002","Rashmika2","e203702@gmail.com","ktrsfghb23132",'2001.04.19',12,"maths"),
+        ("u0003","Rashmika3","e203703@gmail.com","ktrsfghb23133",'2003.03.19',13,"bio_science"),
+        ("u0004","Rashmika4","e203704@gmail.com","ktrsfghb23134",'2005.03.19',13,"bio_science");
+
+
+INSERT INTO subject(subject.subjectid,subject.Subjectname)
+VALUES ("Su0001","biology"),
+		("Su0002","com.maths"),
+        ("Su0003","chemistry"),
+        ("Su0004","physics");
+
+INSERT INTO lesson(lesson.lessonid,lesson.subjectid,lesson.lessonname)
+VALUES ("S1Le0001","Su0001","Introduction of Biology"),
+		("S1Le0002","Su0001","chemical and cellular basis of life"),
+        ("S1Le0003","Su0001","Evolution and diversity of organisms"),
+        ("S2Le0001","Su0002","velocity");
+
+INSERT INTO submodule(submodule.submoduleid,submodule.lessonid,submodule.submodule_name,submodule.description)
+VALUES ("S1Le1sb0001","S1Le0001","branches and areas of study","this is the unit1 submodule1"),
+		("S1Le1sb0002","S1Le0001","issues pertaining to biology","this is the unit1 submodule2"),
+        ("S1Le2sb0001","S1Le0002","Elemental composition of living matter","this is the unit2 submodule1"),
+        ("S1Le2sb0002","S1Le0002","Chemical properties of water important in life","this is the unit2 submodule2"),
+        ("S2Le1sb0001","S2Le0001","velocity 1","this is the unit1 submodule1");
+
+
+INSERT INTO question(question.questionid,question.submoduleid,question.questioncontent)
+VALUES ("S1Le1sb1Q0001","S1Le1sb0001","what is"),
+		("S1Le1sb1Q0002","S1Le1sb0001","which are"),
+        ("S1Le2sb1Q0001","S1Le2sb0001","what is"),
+        ("S1Le2sb2Q0001","S1Le2sb0002","a.What is the main reason for that to maintain the life on earth from some properties of water?i.Water molecule is small ii.Water molecule is a polar molecule iii.	Angular molecule iv.Production of H bonds with other water molecules v.	Ionization ability"),
+        ("S2Le1sb1Q0001","S2Le1sb0001","what is reason");
+	
+
+
+INSERT INTO useranswer(useranswer.answerid,useranswer.questionid,useranswer.userid,useranswer.answer,useranswer.feedback,useranswer.mark)
+VALUES ("A1","S1Le1sb1Q0001","u0001","a","false",0),
+	("A2","S1Le1sb1Q0002","u0001","b","good",5),
+        ("A3","S1Le2sb1Q0001","u0001","c","true",5),
+        ("A4","S1Le2sb2Q0001","u0001","d","true",5),
+        ("A5","S2Le1sb1Q0001","u0002","50ms","refer units",1);
+
+INSERT INTO score(score.lessonid,score.UserID)
+VALUES ("S1Le0001","u0001"),
+	("S1Le0002","u0001"),
+        ("S2Le0001","u0002");
+
+INSERT INTO followsujbect(followsujbect.userid,followsujbect.subjectid)
+VALUES ("u0001","Su0001"),
+	("u0001","Su0003"),
+        ("u0002","Su0002");
+
+
+UPDATE Score s
+JOIN (
+    SELECT l.lessonid, ua.userid, SUM(ua.mark) AS total_marks
+    FROM UserAnswer ua
+    JOIN Question q ON ua.questionid = q.questionid
+    JOIN Submodule sm ON q.submoduleid = sm.submoduleid
+    JOIN Lesson l ON sm.lessonid = l.lessonid
+    GROUP BY l.lessonid, ua.userid
+) AS total ON s.lessonid = total.lessonid AND s.userid = total.userid
+SET s.totallessonmark = total.total_marks;
+
+	

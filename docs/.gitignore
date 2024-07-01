@@ -7,7 +7,7 @@ Gemfile
 
 # Add your own files to be ignored from git in here
 
-MentorMateStage1/__pycache__/
-MentorMateStage1/myenv/
-MentorMateStage1/.env
-MentorMateStage1/vectorDb
+E20-CO225-MENTOR-MATE/MentorMateStage1/__pycache__/
+E20-CO225-MENTOR-MATE/MentorMateStage1/myenv/
+E20-CO225-MENTOR-MATE/MentorMateStage1/.env
+E20-CO225-MENTOR-MATE/MentorMateStage1/vectorDb

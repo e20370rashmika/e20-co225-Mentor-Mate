@@ -12,7 +12,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #dfdfdf;
+    background:  linear-gradient(135deg, #04357e, #c8d1d6);
 }
 .login-box{
     display: flex;
@@ -27,7 +27,7 @@ body{
     margin: 20px 0 40px 0;
 }
 .login-header header{
-    color: #333;
+    color: #1d1b1b;
     font-size: 30px;
     font-weight: 600;
 }
@@ -59,7 +59,7 @@ section{
     display: flex;
     align-items: center;
     font-size: 14px;
-    color: #555;
+    color: #030303;
 }
 #check{
     margin-right: 10px;
@@ -71,7 +71,7 @@ a:hover{
     text-decoration: underline;
 }
 section a{
-    color: #555;
+    color: #131313;
 }
 .input-submit{
     position: relative;
@@ -105,6 +105,6 @@ section a{
     margin-top: 20px;
 }
 .sign-up-link a{
-    color: #000;
+    color: #090909;
     font-weight: 600;
 }

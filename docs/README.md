@@ -34,11 +34,18 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
- Personalized Tutor for A/L Students
+ Personalized AI Tutor for A/L Students 
+
+ A tool that reviews your answers to a question and gives you personalized feedback.
+ 
 
 ## Other Sub Topics
 
-.....
+User Requirements
+-To create an account
+-Submit answers to provided questions
+-Keep track of user grades
+-Set personalized goals
 
 ## Links
 
